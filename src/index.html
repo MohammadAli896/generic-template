@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Image Introduction Section -->
+  <section id="image-intro" class="relative">
+    <div class="container mx-auto min-w-full relative"> 
+      <div class="relative">
+        <img src="images/smallbusiness.jpg" alt="businessimage" class="w-full h-screen object-cover"> 
+        <div class="absolute inset-0 bg-gradient-to-b from-red-400 to-transparent opacity-70"></div>
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+          <h1 class="text-6xl font-bold mb-2">Company Name</h1>
+          <p class="text-lg">Small company description or motto</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <p class="text-lg text-center max-w-3xl mx-auto">
+        Welcome to [Company Name]! We are dedicated to providing exceptional service and top-quality products to our customers. Our mission is to create value and build lasting relationships with everyone we serve.
+      </p>
+      <br>
+      <p class="text-lg text-center max-w-3xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-12 bg-red-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-6">Contact Us</h2>
+      <form class="max-w-xl mx-auto bg-white p-6 shadow-md rounded space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-50 px-4 py-2" required placeholder="Enter your name">
+          <p class="text-xs text-red-500 mt-1 hidden" id="name-error">Name is required.</p>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-50 px-4 py-2" required placeholder="Enter your email">
+          <p class="text-xs text-red-500 mt-1 hidden" id="email-error">Please enter a valid email address.</p>
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" name="message" rows="4" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-50 px-4 py-2" required placeholder="Your message"></textarea>
+          <p class="text-xs text-red-500 mt-1 hidden" id="message-error">Message cannot be empty.</p>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none">Send Message</button>
+        <p class="text-sm text-green-600 mt-4 hidden" id="success-message">We will be in contact soon! Thanks.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-black py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2024 [Company Name]. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+      const successMessage = document.getElementById('success-message');
+
+      let isValid = true;
+
+      if (!name.value.trim()) {
+        document.getElementById('name-error').classList.remove('hidden');
+        isValid = false;
+      } else {
+        document.getElementById('name-error').classList.add('hidden');
+      }
+
+      if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+        document.getElementById('email-error').classList.remove('hidden');
+        isValid = false;
+      } else {
+        document.getElementById('email-error').classList.add('hidden');
+      }
+
+      if (!message.value.trim()) {
+        document.getElementById('message-error').classList.remove('hidden');
+        isValid = false;
+      } else {
+        document.getElementById('message-error').classList.add('hidden');
+      }
+
+      if (isValid) {
+        successMessage.classList.remove('hidden');
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>
